@@ -1,0 +1,376 @@
+/* ============================================================
+   ABOUT.CSS — Section "À propos"
+   Photo de profil + blocs Présentation / Formation / Ambitions
+   ============================================================ */
+
+/* ── Layout principal : 2 colonnes ─────────────────────── */
+.about-section {
+  background-color: var(--bg-secondary);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+/* ── Colonne gauche : blocs de texte ────────────────────── */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Bloc individuel (Présentation / Formation / Ambitions) */
+.about-block {
+  background-color: rgba(10, 25, 47, 0.5);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-6) var(--space-8);
+  transition:
+    border-color var(--transition-base),
+    background-color var(--transition-base),
+    transform var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Lueur subtile au survol du bloc */
+.about-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent-cyan), var(--accent-blue));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.about-block:hover {
+  background-color: rgba(10, 25, 47, 0.75);
+  border-color: transparent;
+  transform: translateX(4px);
+}
+
+.about-block:hover::before {
+  opacity: 1;
+}
+
+.about-block h3 {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--accent-cyan);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Icône ">" devant les titres */
+.about-block h3::before {
+  content: '>';
+  color: var(--accent-cyan);
+  opacity: 0.6;
+  font-weight: var(--fw-bold);
+}
+
+.about-block p {
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ── Timeline mini (Formation) ──────────────────────────── */
+.timeline-mini {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-mini li {
+  padding-left: var(--space-5);
+  border-left: 1px dashed var(--border-normal);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Point sur la timeline */
+.timeline-mini li::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent-cyan);
+  box-shadow: 0 0 6px rgba(100, 255, 218, 0.5);
+  flex-shrink: 0;
+}
+
+/* Ligne date + école côte à côte */
+.tm-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;           /* passe à la ligne si trop long sur mobile */
+  gap: var(--space-3);
+}
+
+.tm-date {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-cyan);
+  white-space: nowrap;       /* la date ne coupe jamais */
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.tm-school {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--text-white);
+  line-height: 1.3;
+  /* Pas de white-space: nowrap ici — on laisse couper si besoin */
+}
+
+.tm-desc {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-normal);
+  margin: 0;
+  padding-left: 0;
+}
+
+
+/* ── Colonne droite : photo + meta ──────────────────────── */
+.about-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  position: sticky;
+  top: calc(var(--navbar-height) + var(--space-8));
+}
+
+/* Wrapper de la photo avec l'effet de cadre DevOps */
+.profile-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  flex-shrink: 0;
+}
+
+/* Cadre décoratif décalé derrière la photo */
+.profile-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(var(--radius-lg) + 2px);
+  background: linear-gradient(
+    135deg,
+    var(--accent-cyan) 0%,
+    var(--accent-blue) 50%,
+    var(--accent-purple) 100%
+  );
+  z-index: 0;
+  opacity: 0.7;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+/* Décalage d'ombre derrière */
+.profile-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: -12px;
+  bottom: -12px;
+  border: 2px solid var(--accent-cyan);
+  border-radius: var(--radius-lg);
+  opacity: 0.25;
+  z-index: -1;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.profile-wrapper:hover::before {
+  opacity: 1;
+  transform: scale(1.01);
+}
+
+.profile-wrapper:hover::after {
+  opacity: 0.5;
+  transform: translate(-3px, -3px);
+}
+
+/* Photo elle-même */
+.profile-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-lg);
+  display: block;
+  /* Padding pour laisser visible le dégradé de bordure */
+  padding: 3px;
+  background-color: var(--bg-primary);
+  /* Clip pour que l'image reste dans le radius */
+  background-clip: padding-box;
+  filter: grayscale(15%) contrast(1.05);
+  transition:
+    filter var(--transition-slow),
+    transform var(--transition-slow);
+}
+
+.profile-wrapper:hover .profile-img {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.02);
+}
+
+/* ── Bloc méta sous la photo ────────────────────────────── */
+.about-meta {
+  width: 100%;
+  background-color: var(--bg-terminal);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.about-meta p {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.about-meta p .text-accent {
+  margin-right: var(--space-2);
+  user-select: none;
+}
+
+/* Barre de titre du mini-terminal méta */
+.about-meta::before {
+  content: '● ● ●';
+  display: block;
+  font-size: 7px;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 3px;
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ── États reveal (classe ajoutée par IntersectionObserver) */
+.about-block {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow),
+    border-color var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.about-block.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Délais en cascade pour les 3 blocs */
+.about-block:nth-child(1) { transition-delay: 0ms;   }
+.about-block:nth-child(2) { transition-delay: 120ms; }
+.about-block:nth-child(3) { transition-delay: 240ms; }
+
+.about-image {
+  opacity: 0;
+  transform: translateX(16px);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
+}
+
+.about-image.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .about-image {
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: static;
+    transform: translateY(16px);
+  }
+
+  .about-image.is-visible {
+    transform: none;
+  }
+
+  .profile-wrapper {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+  }
+
+  .about-meta {
+    flex: 1;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-grid {
+    gap: var(--space-8);
+  }
+
+  .about-image {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+
+  .about-block {
+    padding: var(--space-5) var(--space-5);
+  }
+
+  .timeline-mini li {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .timeline-mini li span {
+    display: block;
+  }
+}

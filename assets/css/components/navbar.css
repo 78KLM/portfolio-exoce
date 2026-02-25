@@ -1,0 +1,274 @@
+/* ============================================================
+   NAVBAR.CSS — Navigation principale + menu burger mobile
+   ============================================================ */
+
+/* ── Structure de base ──────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--navbar-height);
+
+  /* Fond transparent au départ, opacifié au scroll (via JS) */
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--transition-slow),
+    border-color var(--transition-slow),
+    backdrop-filter var(--transition-slow);
+}
+
+/* État "scrollé" — ajouté par JS quand window.scrollY > 50 */
+.navbar.scrolled {
+  background-color: rgba(10, 25, 47, 0.92);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom-color: var(--border-subtle);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Contenu de la nav ──────────────────────────────────── */
+.navbar .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+/* ── Logo ───────────────────────────────────────────────── */
+.navbar-logo {
+  font-family: var(--font-mono);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--text-white);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transition: color var(--transition-fast);
+  flex-shrink: 0;
+
+  /* Empêche le texte de casser */
+  white-space: nowrap;
+}
+
+.navbar-logo .text-accent {
+  color: var(--accent-cyan);
+  transition: text-shadow var(--transition-base);
+}
+
+.navbar-logo:hover {
+  color: var(--accent-cyan);
+}
+
+.navbar-logo:hover .text-accent {
+  text-shadow: 0 0 12px rgba(100, 255, 218, 0.6);
+}
+
+/* ── Liens de navigation (desktop) ─────────────────────── */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+.navbar-links a {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+
+  /* Numéro de section en pseudo-element */
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Numéros de section générés en CSS (:nth-child) */
+.navbar-links li:nth-child(1) a::before { content: "01. "; }
+.navbar-links li:nth-child(2) a::before { content: "02. "; }
+.navbar-links li:nth-child(3) a::before { content: "03. "; }
+.navbar-links li:nth-child(4) a::before { content: "04. "; }
+
+.navbar-links a::before {
+  color: var(--accent-cyan);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.05em;
+}
+
+.navbar-links a:hover {
+  color: var(--text-white);
+  background-color: rgba(100, 255, 218, 0.05);
+}
+
+/* Lien actif (section visible) */
+.navbar-links a.active {
+  color: var(--accent-cyan);
+}
+
+/* ── Bouton CV ──────────────────────────────────────────── */
+.navbar .btn-sm {
+  font-family: var(--font-mono);
+  margin-left: var(--space-4);
+  flex-shrink: 0;
+}
+
+/* ── Hamburger (mobile) ─────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 1100;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-white);
+  border-radius: var(--radius-full);
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base),
+    background-color var(--transition-fast);
+  transform-origin: center;
+}
+
+/* État ouvert du hamburger → croix "×" */
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+.hamburger[aria-expanded="true"] span {
+  background-color: var(--accent-cyan);
+}
+
+/* ── Menu mobile overlay ────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Le bouton CV se cache dans la nav desktop, réapparaît dans le menu mobile */
+  .navbar > .container > .btn-sm {
+    display: none;
+  }
+
+  .navbar-links {
+    /* Overlay plein écran */
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-6);
+    background-color: rgba(10, 25, 47, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    /* Caché par défaut */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition:
+      opacity var(--transition-slow),
+      visibility var(--transition-slow),
+      transform var(--transition-slow);
+    z-index: 1050;
+  }
+
+  /* État ouvert */
+  .navbar-links.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  .navbar-links li {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity var(--transition-slow),
+      transform var(--transition-slow);
+  }
+
+  /* Animation en cascade des liens */
+  .navbar-links.is-open li:nth-child(1) { opacity: 1; transform: none; transition-delay: 60ms; }
+  .navbar-links.is-open li:nth-child(2) { opacity: 1; transform: none; transition-delay: 120ms; }
+  .navbar-links.is-open li:nth-child(3) { opacity: 1; transform: none; transition-delay: 180ms; }
+  .navbar-links.is-open li:nth-child(4) { opacity: 1; transform: none; transition-delay: 240ms; }
+
+  .navbar-links a {
+    font-size: var(--fs-xl);
+    padding: var(--space-4) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .navbar-links a::before {
+    font-size: var(--fs-xs);
+  }
+
+  /* Bouton CV dans le menu mobile */
+  .navbar-links::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--border-normal);
+    margin-top: var(--space-4);
+  }
+}
+
+/* ── Desktop large ──────────────────────────────────────── */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
+
+  .navbar-links {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: all !important;
+    transform: none !important;
+    position: static !important;
+    flex-direction: row !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+  }
+}

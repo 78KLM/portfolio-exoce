@@ -1,0 +1,156 @@
+/* ============================================================
+   CONTACT.CSS — Section "Contact"
+   Cartes de contact + clin d'œil terminal
+   ============================================================ */
+
+.contact-section {
+  background-color: var(--bg-primary);
+}
+
+/* Intro avec prompt "terminal" -------------------------------- */
+.contact-intro {
+  max-width: 620px;
+  margin: 0 auto var(--space-6);
+  text-align: center;
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--text-secondary);
+  position: relative;
+}
+
+/* Petit prompt ">" en monospace avant l'intro */
+.contact-intro::before {
+  content: "$ echo \"let's talk\"";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-cyan);
+  margin-bottom: var(--space-3);
+  opacity: 0.75;
+}
+
+/* Conteneur des cartes --------------------------------------- */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+/* Carte de contact ------------------------------------------- */
+.contact-card {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-card);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  text-decoration: none;
+  color: var(--text-secondary);
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    border-color     var(--transition-base),
+    background-color var(--transition-base),
+    transform        var(--transition-spring),
+    box-shadow       var(--transition-base);
+}
+
+/* Lueur de fond au hover */
+.contact-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at 0% 0%,
+    rgba(100, 255, 218, 0.10),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+/* Hover Tech */
+.contact-card:hover,
+.contact-card:focus-visible {
+  border-color: rgba(100, 255, 218, 0.45);
+  background-color: rgba(10, 25, 47, 0.95);
+  transform: translateY(-5px);
+  box-shadow:
+    0 0 0 1px rgba(100, 255, 218, 0.12),
+    0 14px 40px rgba(0, 0, 0, 0.6);
+}
+
+.contact-card:hover::before,
+.contact-card:focus-visible::before {
+  opacity: 1;
+}
+
+/* Icône de la carte ----------------------------------------- */
+.contact-card i {
+  font-size: 1.6rem;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  transition:
+    transform var(--transition-spring),
+    color     var(--transition-fast),
+    filter    var(--transition-fast);
+}
+
+/* Bond de l’icône au hover */
+.contact-card:hover i,
+.contact-card:focus-visible i {
+  transform: translateY(-5px) scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.6));
+}
+
+/* Texte de la carte ----------------------------------------- */
+.contact-card span {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+/* Variation de couleur par type (facultatif) ---------------- */
+.contact-card[href^="mailto:"] i {
+  color: #f97316; /* email – orange */
+}
+.contact-card[href*="github.com"] i {
+  color: #f4f4f4;
+}
+.contact-card[href*="linkedin.com"] i {
+  color: #0a66c2;
+}
+
+.contact-card:hover[href^="mailto:"] i,
+.contact-card:focus-visible[href^="mailto:"] i,
+.contact-card:hover[href*="github.com"] i,
+.contact-card:focus-visible[href*="github.com"] i,
+.contact-card:hover[href*="linkedin.com"] i,
+.contact-card:focus-visible[href*="linkedin.com"] i {
+  color: var(--accent-cyan);
+}
+
+/* Responsive ------------------------------------------------ */
+@media (max-width: 640px) {
+  .contact-card {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .contact-intro {
+    font-size: var(--fs-base);
+  }
+
+  .contact-intro::before {
+    font-size: 0.7rem;
+  }
+}

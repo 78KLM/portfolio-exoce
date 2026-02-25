@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Exocé Kalemba — Étudiant ingénieur DevOps & Cloud. Portfolio de projets, compétences et parcours." />
+  <meta property="og:title" content="Exocé Kalemba | DevOps & Cloud Engineer" />
+  <title>Exocé Kalemba | DevOps · Cloud · Automation</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>" />
+
+  <!-- Preconnect polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (icônes) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- CSS modulaire -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="assets/css/components/hero.css" />
+  <link rel="stylesheet" href="assets/css/components/about.css" />
+  <link rel="stylesheet" href="assets/css/components/skills.css" />
+  <link rel="stylesheet" href="assets/css/components/projects.css" />
+  <link rel="stylesheet" href="assets/css/components/contact.css" />
+  <link rel="stylesheet" href="assets/css/components/footer.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════ LOADER ═══════════ -->
+  <div class="loader-container" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <span class="loader-prompt">$</span>
+      <span class="loader-text" id="loader-text"></span>
+    </div>
+  </div>
+
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <header class="navbar" id="navbar">
+    <nav class="container" role="navigation" aria-label="Navigation principale">
+      <a class="navbar-logo" href="#hero">
+        <span class="font-mono text-accent">~/</span>Kalemba
+      </a>
+      <ul class="navbar-links" id="nav-links">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#skills">Stack</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="assets/docs/Cy.pdf" class="btn btn-outline btn-sm" download>
+        <span>CV</span> <i class="fa-solid fa-download" style="font-size:0.75em;"></i>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-text">
+          <p class="hero-intro font-mono reveal">
+            <span class="text-accent">$</span> whoami
+          </p>
+          <h1 class="hero-name reveal delay-1">
+            Exocé <span class="text-gradient">Kalemba</span>
+          </h1>
+          <h2 class="hero-title font-mono reveal delay-2">
+            <span id="typewriter"></span><span class="cursor">_</span>
+          </h2>
+          <p class="hero-desc reveal delay-3">
+            Étudiant en ingénierie logicielle &amp; DevOps à l'ESIEE-IT.<br />
+            En quête d'un cycle ingénieur pour approfondir l'automatisation,
+            l'orchestration et le Cloud.
+          </p>
+          <div class="hero-cta reveal delay-4">
+            <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+            <a href="#contact" class="btn btn-outline">Me contacter</a>
+          </div>
+        </div>
+
+        <div class="hero-terminal reveal delay-2">
+          <div class="terminal-window" aria-hidden="true">
+            <div class="terminal-bar">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="terminal-title">exoce@portfolio:~</span>
+            </div>
+            <pre class="terminal-body"><code><span class="t-prompt">$</span> <span class="t-cmd">cat about.yml</span>
+<span class="t-key">name</span>:   <span class="t-val">Exocé Kalemba</span>
+<span class="t-key">role</span>:   <span class="t-val">Future DevOps Engineer</span>
+<span class="t-key">school</span>: <span class="t-val">ESIEE-IT (alternance)</span>
+<span class="t-key">stack</span>:
+  - <span class="t-val">Linux</span>   - <span class="t-val">Docker</span>
+  - <span class="t-val">Git</span>     - <span class="t-val">Python</span>
+  - <span class="t-val">CI/CD</span>   - <span class="t-val">Symfony</span>
+<span class="t-key">status</span>: <span class="t-green">✓ available</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ À PROPOS ═══════════ -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-num font-mono text-accent">01.</span>
+          <h2 class="section-title">À propos</h2>
+        </div>
+        <div class="about-grid">
+
+          <!-- Colonne gauche : blocs de texte -->
+          <div class="about-content">
+
+            <div class="about-block reveal">
+              <h3>Présentation</h3>
+              <p>
+                Titulaire d'un BTS SIO option SLAM, je poursuis un double diplôme
+                Licence / Bachelor DevOps à l'ESIEE-IT en alternance. Passionné par la synergie
+                entre développement, automatisation et exploitation, je construis des projets
+                concrets pour consolider ma montée en compétences.
+              </p>
+            </div>
+
+            <div class="about-block reveal delay-1">
+              <h3>Formation</h3>
+              <ul class="timeline-mini">
+
+                <li>
+                  <div class="tm-header">
+                    <span class="tm-date">2025 – 2026</span>
+                    <strong class="tm-school">ESIEE-IT, Pontoise</strong>
+                  </div>
+                  <p class="tm-desc">
+                    <i class="fa-solid fa-graduation-cap tm-icon" aria-hidden="true"></i>
+                    Licence / Bachelor Ingénierie Logicielle &amp; DevOps (alternance)
+                  </p>
+                </li>
+
+                <li>
+                  <div class="tm-header">
+                    <span class="tm-date">2023 – 2025</span>
+                    <strong class="tm-school">Lycée Jean Vilar, Plaisir</strong>
+                  </div>
+                  <p class="tm-desc">
+                    <i class="fa-solid fa-graduation-cap tm-icon" aria-hidden="true"></i>
+                    BTS SIO — option SLAM
+                  </p>
+                </li>
+
+                <li>
+                  <div class="tm-header">
+                    <span class="tm-date">2020 – 2023</span>
+                    <strong class="tm-school">Lycée Val de Seine, Grand-Quevilly</strong>
+                  </div>
+                  <p class="tm-desc">
+                    <i class="fa-solid fa-graduation-cap tm-icon" aria-hidden="true"></i>
+                    Bac Général — Maths + AMC · Parcours sport-études Judo
+                  </p>
+                </li>
+
+              </ul>
+            </div>
+
+            <div class="about-block reveal delay-2">
+              <h3>Ambitions</h3>
+              <p>
+                Intégrer un cycle ingénieur pour atteindre un niveau d'expertise en DevOps,
+                orchestration (Kubernetes) et Cloud. Chaque projet est une opportunité d'apprendre.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Colonne droite : photo + méta -->
+          <div class="about-image reveal delay-1">
+            <div class="profile-wrapper">
+              <img
+                src="assets/images/profile.webp"
+                alt="Photo de profil Exocé Kalemba"
+                class="profile-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="about-meta font-mono">
+              <p><span class="text-accent">&gt;</span> Sartrouville, Île-de-France</p>
+              <p><span class="text-accent">&gt;</span> Alternant ESIEE-IT</p>
+              <p><span class="text-accent">&gt;</span> Judoka · Développeur</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ STACK / COMPÉTENCES ═══════════ -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-num font-mono text-accent">02.</span>
+          <h2 class="section-title">Stack technique</h2>
+        </div>
+        <div class="skills-container" id="skills-container" role="list">
+          <!-- Injecté dynamiquement par skills.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ PROJETS ═══════════ -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-num font-mono text-accent">03.</span>
+          <h2 class="section-title">Projets</h2>
+        </div>
+        <div class="projects-filters reveal" role="tablist" aria-label="Filtrer les projets">
+          <button class="filter-btn active" data-filter="all"     role="tab" aria-selected="true">Tous</button>
+          <button class="filter-btn"        data-filter="termine" role="tab" aria-selected="false">Terminés</button>
+          <button class="filter-btn"        data-filter="en-cours"role="tab" aria-selected="false">En cours</button>
+        </div>
+        <div class="projects-grid" id="projects-grid" role="list">
+          <!-- Injecté dynamiquement par projects.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section id="contact" class="section contact-section">
+      <div class="container contact-container">
+        <div class="section-header reveal">
+          <span class="section-num font-mono text-accent">04.</span>
+          <h2 class="section-title">Contact</h2>
+        </div>
+        <p class="contact-intro reveal">
+          Je suis ouvert aux opportunités d'alternance pour un cycle ingénieur.<br />
+          N'hésitez pas à me contacter.
+        </p>
+        <div class="contact-links reveal delay-1">
+
+          <a href="mailto:kalembaexoce@gmail.com" class="contact-card">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span>kalembaexoce@gmail.com</span>
+          </a>
+
+          <a href="https://github.com/78KLM" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            <span>GitHub</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/exoc%C3%A9-kalemba-wa-kamba-022817358/" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            <span>LinkedIn</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="font-mono">
+        <span class="text-accent">$</span> Built by Exocé Kalemba wa kamba — 2026
+      </p>
+      <a href="legal.html" class="footer-legal">Mentions légales</a>
+    </div>
+  </footer>
+
+  <!-- Scripts ES modules -->
+  <script type="module" src="assets/js/main.js"></script>
+
+</body>
+</html>

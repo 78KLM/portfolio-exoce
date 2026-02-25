@@ -1,0 +1,399 @@
+/* ============================================================
+   PROJECTS.CSS — Section "Projets"
+   Cards modernes + filtres + hover glow
+   ============================================================ */
+
+.projects-section {
+  background-color: var(--bg-secondary);
+}
+
+/* ── Filtres ─────────────────────────────────────────────── */
+.projects-filters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 1.1rem;
+  cursor: pointer;
+  transition:
+    color            var(--transition-fast),
+    border-color     var(--transition-fast),
+    background-color var(--transition-fast),
+    box-shadow       var(--transition-fast);
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  color: var(--text-white);
+  border-color: var(--border-normal);
+}
+
+.filter-btn.active {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(100, 255, 218, 0.07);
+  box-shadow: 0 0 12px rgba(100, 255, 218, 0.1);
+}
+
+/* ── Grille de projets ───────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+}
+
+/* ── Card projet ─────────────────────────────────────────── */
+.project-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  /* Reveal scroll */
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity       0.5s ease,
+    transform     0.5s ease,
+    border-color  var(--transition-base),
+    box-shadow    var(--transition-base);
+}
+
+.project-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Délais en cascade */
+.project-card:nth-child(1) { transition-delay: 0ms;   }
+.project-card:nth-child(2) { transition-delay: 120ms; }
+.project-card:nth-child(3) { transition-delay: 240ms; }
+
+/* Hover : glow cyan-bleu */
+.project-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(100, 255, 218, 0.07),
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(100, 255, 218, 0.07);
+  transform: translateY(-5px);
+}
+
+/* Liseré top au hover */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-cyan),
+    var(--accent-blue),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  z-index: 2;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Badge "Featured" ────────────────────────────────────── */
+.project-featured-badge {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background: rgba(100, 255, 218, 0.08);
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  border-radius: var(--radius-full);
+  padding: 3px 8px;
+  z-index: 3;
+}
+
+/* ── Image du projet ─────────────────────────────────────── */
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--bg-tertiary);
+  flex-shrink: 0;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+  filter: brightness(0.85) saturate(0.9);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.04);
+  filter: brightness(0.95) saturate(1.1);
+}
+
+/* Fallback si pas d'image — terminal décoratif */
+.project-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    var(--bg-tertiary)  100%
+  );
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.project-image-placeholder span {
+  color: var(--accent-cyan);
+  margin-right: var(--space-2);
+}
+
+/* ── Contenu de la card ──────────────────────────────────── */
+.project-content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-4);
+}
+
+/* Ligne titre + statut */
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.project-title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--text-white);
+  margin: 0;
+  line-height: var(--lh-snug);
+  transition: color var(--transition-fast);
+}
+
+.project-card:hover .project-title {
+  color: var(--accent-cyan);
+}
+
+/* ── Badge de statut ─────────────────────────────────────── */
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--fw-medium);
+  border-radius: var(--radius-full);
+  padding: 3px 9px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Statut : terminé */
+.project-status.termine {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+.project-status.termine .status-dot {
+  background: #3b82f6;
+}
+
+/* Statut : en cours */
+.project-status.en-cours {
+  color: var(--accent-green);
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+.project-status.en-cours .status-dot {
+  background: var(--accent-green);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Statut : en pause */
+.project-status.en-pause {
+  color: var(--accent-yellow);
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+.project-status.en-pause .status-dot {
+  background: var(--accent-yellow);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+  50%       { box-shadow: 0 0 0 4px rgba(0, 255, 136, 0);  }
+}
+
+/* ── Description ─────────────────────────────────────────── */
+.project-description {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--text-secondary);
+  margin: 0;
+  /* Clamp à 3 lignes */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Dates ───────────────────────────────────────────────── */
+.project-dates {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.project-dates i {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+/* ── Tags de technos ─────────────────────────────────────── */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: auto;   /* pousse les tags et les liens en bas */
+}
+
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-blue);
+  background: rgba(58, 123, 213, 0.08);
+  border: 1px solid rgba(58, 123, 213, 0.18);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+/* ── Liens de la card (GitHub + Live) ────────────────────── */
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition:
+    color        var(--transition-fast),
+    transform    var(--transition-fast);
+}
+
+.project-link:hover {
+  color: var(--accent-cyan);
+  transform: translateX(2px);
+}
+
+.project-link i {
+  font-size: 0.95rem;
+  transition: transform var(--transition-spring);
+}
+
+.project-link:hover i {
+  transform: scale(1.15);
+}
+
+/* Séparateur entre les liens */
+.project-links-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--border-subtle);
+}
+
+/* ── État "aucun projet" (filtre vide) ───────────────────── */
+.projects-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-16) var(--space-8);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.projects-empty span {
+  color: var(--accent-cyan);
+  margin-right: var(--space-2);
+}
+
+/* ── Animation filter (cards cachées) ───────────────────── */
+.project-card.is-hidden {
+  display: none;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-content {
+    padding: var(--space-5);
+  }
+
+  .projects-filters {
+    gap: var(--space-2);
+  }
+
+  .filter-btn {
+    font-size: 0.68rem;
+    padding: 0.35rem 0.9rem;
+  }
+}

@@ -1,0 +1,162 @@
+/* ============================================================
+   RESET.CSS — Normalize moderne + reset opinioné
+   ============================================================ */
+
+/* ── Box sizing universel ───────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Root & document ────────────────────────────────────── */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height, 70px);
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+/* ── Body ───────────────────────────────────────────────── */
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ── Typographie ────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: var(--lh-tight, 1.2);
+}
+
+p {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* ── Listes ─────────────────────────────────────────────── */
+ul, ol {
+  list-style: none;
+}
+
+/* ── Liens ──────────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Médias ─────────────────────────────────────────────── */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+/* ── Formulaires ────────────────────────────────────────── */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* ── Code ───────────────────────────────────────────────── */
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9em;
+}
+
+pre {
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* ── Divers ─────────────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--border-subtle, rgba(255,255,255,0.1));
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* ── Focus visible accessible ───────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent-cyan, #64ffda);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Sélection de texte ─────────────────────────────────── */
+::selection {
+  background-color: rgba(100, 255, 218, 0.2);
+  color: var(--text-white, #e6f1ff);
+}
+
+/* ── Scrollbar personnalisée (Webkit) ───────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary, #0a192f);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary, #1d3461);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan, #64ffda);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-tertiary) var(--bg-primary);
+}
+
+/* ── Réduction des mouvements (accessibilité) ───────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
