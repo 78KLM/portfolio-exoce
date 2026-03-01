@@ -99,6 +99,12 @@ export const skills = [
         description: "Développement .NET, applications Windows et services backend.",
       },
       {
+      name: "C (en cours)",
+      icon: "fas fa-microchip",  // Icône parfaite pour C
+      url: "https://www.cprogramming.com/",
+      description: "Langage système de bas niveau pour systèmes embarqués et performance.",
+      },
+      {
         name: "PHP",
         icon: "fab fa-php",
         url: "https://www.php.net/",

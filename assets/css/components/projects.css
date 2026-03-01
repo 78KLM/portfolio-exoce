@@ -1,6 +1,5 @@
 /* ============================================================
-   PROJECTS.CSS — Section "Projets"
-   Cards modernes + filtres + hover glow
+   PROJECTS.CSS — Section "Projets" + Modale détails projet
    ============================================================ */
 
 .projects-section {
@@ -63,7 +62,7 @@
   flex-direction: column;
   position: relative;
 
-  /* Reveal scroll */
+  /* Scroll reveal */
   opacity: 0;
   transform: translateY(20px);
   transition:
@@ -73,12 +72,16 @@
     box-shadow    var(--transition-base);
 }
 
+/* Carte cliquable */
+.project-card-clickable {
+  cursor: pointer;
+}
+
 .project-card.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Délais en cascade */
 .project-card:nth-child(1) { transition-delay: 0ms;   }
 .project-card:nth-child(2) { transition-delay: 120ms; }
 .project-card:nth-child(3) { transition-delay: 240ms; }
@@ -156,7 +159,6 @@
   filter: brightness(0.95) saturate(1.1);
 }
 
-/* Fallback si pas d'image — terminal décoratif */
 .project-image-placeholder {
   width: 100%;
   height: 100%;
@@ -187,7 +189,6 @@
   gap: var(--space-4);
 }
 
-/* Ligne titre + statut */
 .project-header {
   display: flex;
   align-items: flex-start;
@@ -230,7 +231,6 @@
   flex-shrink: 0;
 }
 
-/* Statut : terminé */
 .project-status.termine {
   color: #3b82f6;
   background: rgba(59, 130, 246, 0.1);
@@ -240,7 +240,6 @@
   background: #3b82f6;
 }
 
-/* Statut : en cours */
 .project-status.en-cours {
   color: var(--accent-green);
   background: rgba(0, 255, 136, 0.08);
@@ -251,7 +250,6 @@
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* Statut : en pause */
 .project-status.en-pause {
   color: var(--accent-yellow);
   background: rgba(255, 215, 0, 0.08);
@@ -266,13 +264,12 @@
   50%       { box-shadow: 0 0 0 4px rgba(0, 255, 136, 0);  }
 }
 
-/* ── Description ─────────────────────────────────────────── */
+/* ── Description (card) — clamp à 3 lignes ──────────────── */
 .project-description {
   font-size: var(--fs-sm);
   line-height: var(--lh-relaxed);
   color: var(--text-secondary);
   margin: 0;
-  /* Clamp à 3 lignes */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -294,12 +291,12 @@
   opacity: 0.6;
 }
 
-/* ── Tags de technos ─────────────────────────────────────── */
+/* ── Tags ────────────────────────────────────────────────── */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-top: auto;   /* pousse les tags et les liens en bas */
+  margin-top: auto;
 }
 
 .project-tag {
@@ -313,7 +310,8 @@
   white-space: nowrap;
 }
 
-/* ── Liens de la card (GitHub + Live) ────────────────────── */
+/* ── Liens (GitHub / Live) — masqués pour l'instant ─────── */
+/* Conservés au cas où, mais non utilisés dans le rendu */
 .project-links {
   display: flex;
   align-items: center;
@@ -336,28 +334,18 @@
     transform    var(--transition-fast);
 }
 
-.project-link:hover {
-  color: var(--accent-cyan);
-  transform: translateX(2px);
-}
-
 .project-link i {
   font-size: 0.95rem;
   transition: transform var(--transition-spring);
 }
 
-.project-link:hover i {
-  transform: scale(1.15);
-}
-
-/* Séparateur entre les liens */
 .project-links-sep {
   width: 1px;
   height: 14px;
   background: var(--border-subtle);
 }
 
-/* ── État "aucun projet" (filtre vide) ───────────────────── */
+/* ── État "aucun projet" ─────────────────────────────────── */
 .projects-empty {
   grid-column: 1 / -1;
   text-align: center;
@@ -371,12 +359,131 @@
   margin-right: var(--space-2);
 }
 
-/* ── Animation filter (cards cachées) ───────────────────── */
+/* Cartes cachées par filtre */
 .project-card.is-hidden {
   display: none;
 }
 
-/* ── Responsive ──────────────────────────────────────────── */
+/* ── Modale projet ───────────────────────────────────────── */
+
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: none; /* activé par classe .is-open */
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(10px);
+}
+
+.project-modal-backdrop.is-open {
+  display: flex;
+}
+
+.project-modal {
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-card);
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.9),
+    0 18px 60px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+.project-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.project-modal-title {
+  font-size: var(--fs-xl);
+  margin: 0;
+}
+
+.project-modal-status-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.project-modal-close {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.project-modal-close:hover {
+  color: var(--accent-cyan);
+  background-color: rgba(100, 255, 218, 0.06);
+  transform: rotate(90deg);
+}
+
+.project-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-6) var(--space-6);
+  overflow-y: auto;
+}
+
+/* Image dans la modale */
+.project-modal-image-wrapper {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.project-modal-description {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--text-secondary);
+}
+
+.project-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Responsive modale */
+@media (max-width: 768px) {
+  .project-modal {
+    max-width: 100%;
+    max-height: 100vh;
+  }
+
+  .project-modal-header,
+  .project-modal-body {
+    padding-inline: var(--space-4);
+  }
+
+  .project-modal-title {
+    font-size: var(--fs-lg);
+  }
+}
+
+/* ── Responsive section ───────────────────────────────────── */
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
