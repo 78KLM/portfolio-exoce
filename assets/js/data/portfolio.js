@@ -13,8 +13,8 @@ export const skills = [
   // ── 1. Infrastructure & Cloud ─────────────────────────────
   // Card maîtresse → pleine largeur (grid-column: 1 / -1)
   {
-    category: "Infrastructure & Cloud",
-    icon: "🖥️",
+    category: "Cloud & DevOps",
+    icon: "☁️",
     items: [
       {
         name: "Linux",
@@ -33,6 +33,18 @@ export const skills = [
         icon: "fas fa-dharmachakra",
         url: "https://kubernetes.io/",
         description: "Orchestration de conteneurs, notions de pods, services et déploiements.",
+      },
+      {
+        name: "AWS",
+        icon: "fab fa-aws",
+        url: "https://aws.amazon.com/",
+        description: "Services cloud (EC2, S3, IAM) et déploiement d’infrastructures scalables.",
+      },
+      {
+        name: "Terraform",
+        icon: "fas fa-cubes",
+        url: "https://www.terraform.io/",
+        description: "Infrastructure as Code pour provisionner des ressources cloud de manière déclarative.",
       },
       {
         name: "VMware",
