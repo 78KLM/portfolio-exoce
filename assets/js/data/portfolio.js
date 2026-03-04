@@ -1,61 +1,49 @@
 // assets/js/data/portfolio.js
-export const personalInfo = {
-  name:     "Exocé Kalemba wa Kamba",
-  title:    "Étudiant Ingénierie Logicielle & DevOps",
-  location: "Sartrouville, Île-de-France",
-  email:    "kalembaexoce@gmail.com",
-  github:   "https://github.com/votreprofil",
-  linkedin: "https://linkedin.com/in/votreprofil",
-};
 
 export const skills = [
-
-  // ── 1. Infrastructure & Cloud ─────────────────────────────
-  // Card maîtresse → pleine largeur (grid-column: 1 / -1)
   {
     category: "Cloud & DevOps",
     icon: "☁️",
     items: [
       {
-        name: "Linux",
-        icon: "fab fa-linux",
-        url: "https://www.kernel.org/",
-        description: "Administration système, commandes shell, gestion de services et permissions.",
-      },
-      {
-        name: "Docker",
-        icon: "fab fa-docker",
-        url: "https://www.docker.com/",
-        description: "Conteneurisation d'applications, Dockerfile, docker-compose, registry.",
-      },
-      {
-        name: "Kubernetes (en cours)",
-        icon: "fas fa-dharmachakra",
-        url: "https://kubernetes.io/",
-        description: "Orchestration de conteneurs, notions de pods, services et déploiements.",
-      },
-      {
         name: "AWS",
         icon: "fab fa-aws",
         url: "https://aws.amazon.com/",
-        description: "Services cloud (EC2, S3, IAM) et déploiement d’infrastructures scalables.",
+        description: "Cloud public (compute, storage, IAM) et bonnes pratiques de déploiement.",
       },
       {
         name: "Terraform",
         icon: "fas fa-cubes",
         url: "https://www.terraform.io/",
-        description: "Infrastructure as Code pour provisionner des ressources cloud de manière déclarative.",
+        description: "Infrastructure as Code : provisioning reproductible et versionné.",
+      },
+      {
+        name: "Linux",
+        icon: "fab fa-linux",
+        url: "https://www.kernel.org/",
+        description: "Admin système, services, permissions, troubleshooting et outils CLI.",
+      },
+      {
+        name: "Docker",
+        icon: "fab fa-docker",
+        url: "https://www.docker.com/",
+        description: "Conteneurisation, Dockerfile, images, réseaux, volumes, compose.",
+      },
+      {
+        name: "Kubernetes (en cours)",
+        icon: "fas fa-dharmachakra",
+        url: "https://kubernetes.io/",
+        description: "Notions : pods, services, deployments, configmaps, secrets.",
       },
       {
         name: "VMware",
         icon: "fas fa-server",
         url: "https://www.vmware.com/",
-        description: "Virtualisation d'infrastructure, gestion de machines virtuelles.",
+        description: "Virtualisation : gestion de VMs et environnements de test.",
       },
     ],
   },
 
-  // ── 2. Scripting & Automatisation ────────────────────────
   {
     category: "Scripting & Automatisation",
     icon: "⚡",
@@ -64,36 +52,35 @@ export const skills = [
         name: "Bash (en cours)",
         icon: "fas fa-terminal",
         url: "https://www.gnu.org/software/bash/",
-        description: "Écriture de scripts shell pour l'automatisation de tâches système.",
+        description: "Scripts d’automatisation, tâches cron, tooling CLI.",
       },
       {
         name: "Python",
         icon: "fab fa-python",
         url: "https://www.python.org/",
-        description: "Scripting, automatisation, manipulation de données et appels API.",
+        description: "Scripting, automatisation, appels API, tooling interne.",
       },
       {
         name: "Git",
         icon: "fab fa-git-alt",
         url: "https://git-scm.com/",
-        description: "Versioning, branches, merge, rebase, workflows GitHub/GitLab.",
+        description: "Branching, PR, merges, workflows (GitHub/GitLab).",
       },
       {
         name: "YAML",
         icon: "fas fa-file-code",
         url: "https://yaml.org/",
-        description: "Fichiers de configuration : Docker Compose, CI/CD pipelines, Kubernetes.",
+        description: "Config : pipelines, compose, manifests.",
       },
       {
         name: "JSON",
         icon: "fas fa-code",
         url: "https://www.json.org/",
-        description: "Échange de données, configuration d'APIs et de fichiers manifestes.",
+        description: "Échanges de données, payloads API, configuration.",
       },
     ],
   },
 
-  // ── 3. Software & Back-end ────────────────────────────────
   {
     category: "Software & Back-end",
     icon: "🔧",
@@ -102,42 +89,41 @@ export const skills = [
         name: "Java",
         icon: "fab fa-java",
         url: "https://www.java.com/",
-        description: "Programmation orientée objet, applications d'entreprise et backend.",
+        description: "POO, backend et bases de conception logicielle.",
       },
       {
         name: "C#",
         icon: "fas fa-code",
-        url: "https://docs.microsoft.com/fr-fr/dotnet/csharp/",
-        description: "Développement .NET, applications Windows et services backend.",
+        url: "https://learn.microsoft.com/fr-fr/dotnet/csharp/",
+        description: "Développement .NET côté backend et services.",
       },
       {
-      name: "C (en cours)",
-      icon: "fas fa-microchip",  // Icône parfaite pour C
-      url: "https://www.cprogramming.com/",
-      description: "Langage système de bas niveau pour systèmes embarqués et performance.",
+        name: "C (en cours)",
+        icon: "fas fa-microchip",
+        url: "https://www.cprogramming.com/",
+        description: "Bases du langage C, logique bas niveau et performance.",
       },
       {
         name: "PHP",
         icon: "fab fa-php",
         url: "https://www.php.net/",
-        description: "Développement web backend avec le framework Symfony.",
+        description: "Backend PHP, bonnes pratiques et écosystème.",
       },
       {
         name: "Symfony",
         icon: "fas fa-sync-alt",
         url: "https://symfony.com/",
-        description: "Framework PHP MVC, architecture modulaire, API REST.",
+        description: "MVC, services, ORM, API, architecture propre.",
       },
       {
         name: "JavaScript",
         icon: "fab fa-js",
         url: "https://developer.mozilla.org/fr/docs/Web/JavaScript",
-        description: "Scripts front-end, DOM, requêtes asynchrones (fetch/async-await).",
+        description: "JS pour l’UI, DOM, fetch, modules.",
       },
     ],
   },
 
-  // ── 4. Data & Outils ──────────────────────────────────────
   {
     category: "Data & Outils",
     icon: "🗄️",
@@ -146,75 +132,84 @@ export const skills = [
         name: "SQL",
         icon: "fas fa-database",
         url: "https://www.mysql.com/",
-        description: "Requêtes, jointures, procédures stockées, gestion de bases MySQL.",
+        description: "Requêtes, jointures, modélisation relationnelle.",
       },
       {
         name: "MySQL",
         icon: "fas fa-database",
         url: "https://www.mysql.com/",
-        description: "SGBD relationnel, modélisation de schémas, optimisation de requêtes.",
+        description: "Administration et optimisation basique.",
       },
       {
         name: "Postman",
         icon: "fas fa-paper-plane",
         url: "https://www.postman.com/",
-        description: "Test et documentation d'APIs REST, collections, environnements.",
+        description: "Tests API REST, collections, environnements.",
       },
       {
         name: "GitHub",
         icon: "fab fa-github",
         url: "https://github.com/",
-        description: "Hébergement de code, pull requests, GitHub Actions pour CI/CD.",
+        description: "Repo, PR, issues, GitHub Actions (CI/CD).",
       },
     ],
   },
-
 ];
-
 
 export const projects = [
-
   {
-    title:       "Portfolio & Pipeline CI/CD",
-    description: "Développement d'un portfolio statique ultra-performant et mise en place d'un pipeline CI/CD via GitHub Actions pour automatiser les mises en production lors des pushs sur la branche main.",
-    image:       "assets/images/projects/portfolio.webp",
-    technologies: ["GitHub Actions", "HTML", "CSS", "JavaScript", "Git"],
-    status:      "termine",
+    title: "Architecture de Sauvegarde Automatisée AWS",
+    description: "Déploiement 'Zero Touch' d'une infrastructure Cloud via Terraform. Sécurisation EC2 vers S3 via Rôle IAM (principe du Zero Trust) et automatisation des backups via script Bash et Cron.",
+    image: "assets/images/projects/aws-terraform.png",
+    technologies: ["AWS", "Terraform", "Linux", "Bash", "IAM","Cron"],
+    status: "termine",
     statusLabel: "Terminé",
-    startDate:   "Jan 2026",
-    endDate:     "Fév 2026",
-    github:      "https://github.com/votreprofil/portfolio",
-    live:        "#",
-    highlight:   true,   // carte mise en avant (badge "Featured")
+    startDate: "Mars 2026",
+    endDate: "Mars 2026",
+    github: "",
+    live: null,
+    highlight: true,
   },
 
   {
-    title:       "Architecture Web Dimawork",
-    description: "Plateforme de mise en relation ESN / Freelances. Architecture backend MVC, gestion de BDD relationnelle, et préparation de l'environnement pour une future conteneurisation Docker.",
-    image:       "assets/images/projects/dimawork.webp",
-    technologies: ["PHP", "Symfony", "MySQL", "Architecture Web"],
-    status:      "en-pause",
-    statusLabel: "En pause",
-    startDate:   "Mai 2024",
-    endDate:     "—",
-    github:      "https://github.com/votreprofil/dimawork",
-    live:        null,
-    highlight:   false,
+    title: "Portfolio & Pipeline CI/CD",
+    description: "Développement d'un portfolio statique ultra-performant et mise en place d'un pipeline CI/CD via GitHub Actions pour automatiser les mises en production lors des pushs sur la branche main.",
+    image: "assets/images/projects/portfolio.webp",
+    technologies: ["GitHub Actions", "HTML", "CSS", "JavaScript", "Git"],
+    status: "termine",
+    statusLabel: "Terminé",
+    startDate: "Jan 2026",
+    endDate: "Fév 2026",
+    github: "https://github.com/votreprofil/portfolio",
+    live: null,
+    highlight: true,
   },
 
   {
-    title:       "Environnement de Dev Dockerisé",
+    title: "Environnement de Dev Dockerisé",
     description: "Stack locale conteneurisée (Nginx, PHP-FPM, MySQL) via Docker Compose pour standardiser l'environnement de dev et éliminer les problèmes de compatibilité entre machines.",
-    image:       "assets/images/projects/docker-env.webp",
+    image: "assets/images/projects/docker-env.webp",
     technologies: ["Docker", "Docker Compose", "Linux", "Bash", "Nginx"],
-    status:      "en-cours",
-    statusLabel: "En cours",
-    startDate:   "Fév 2026",
-    endDate:     "—",
-    github:      "https://github.com/votreprofil/docker-dev-env",
-    live:        null,
-    highlight:   false,
+    status: "termine",
+    statusLabel: "Terminé",
+    startDate: "Fév 2026",
+    endDate: "Mars 2026",
+    github: "",
+    live: null,
+    highlight: false,
   },
 
+  {
+    title: "Architecture Web Dimawork",
+    description: "Plateforme de mise en relation ESN / Freelances. Architecture backend MVC, gestion de BDD relationnelle, et préparation de l'environnement pour une future conteneurisation Docker.",
+    image: "assets/images/projects/dimawork.webp",
+    technologies: ["PHP", "Symfony", "MySQL", "Architecture Web"],
+    status: "en-pause",
+    statusLabel: "En pause",
+    startDate: "Mai 2024",
+    endDate: "—",
+    github: "",
+    live: null,
+    highlight: false,
+  },
 ];
-
