@@ -64,7 +64,7 @@ export const skills = [
         name: "Git",
         icon: "fab fa-git-alt",
         url: "https://git-scm.com/",
-        description: "Branching, PR, merges, workflows (GitHub/GitLab).",
+        description: "Branching, PR, merges, workflows (Conventional Commits).",
       },
       {
         name: "YAML",
@@ -141,6 +141,12 @@ export const skills = [
         description: "Administration et optimisation basique.",
       },
       {
+        name: "PostgreSQL",
+        icon: "fas fa-database",
+        url: "https://www.postgresql.org/",
+        description: "Base de données relationnelle avancée, couplée avec des ORM.",
+      },
+      {
         name: "Postman",
         icon: "fas fa-paper-plane",
         url: "https://www.postman.com/",
@@ -158,15 +164,29 @@ export const skills = [
 
 export const projects = [
   {
-    title: "Architecture de Sauvegarde Automatisée AWS",
-    description: "Déploiement 'Zero Touch' d'une infrastructure Cloud via Terraform. Sécurisation EC2 vers S3 via Rôle IAM (principe du Zero Trust) et automatisation des backups via script Bash et Cron.",
-    image: "assets/images/projects/aws-terraform.png",
-    technologies: ["AWS", "Terraform", "Linux", "Bash", "IAM","Cron"],
+    title: "Containerized Java Microservice (Spring Boot / Docker)",
+    description: "Designed a REST API in Java integrating diagnostic routes (Healthcheck) for monitoring. Containerized the application using an optimized multi-stage Dockerfile. Orchestrated the backend and a PostgreSQL database using Docker Compose to establish a secure internal network. Source code is rigorously versioned following the Conventional Commits standard.",
+    image: "assets/images/projects/java-docker.png",
+    technologies: ["Java", "Spring Boot", "Docker", "Docker Compose", "PostgreSQL", "Git"],
     status: "termine",
     statusLabel: "Terminé",
     startDate: "Mars 2026",
     endDate: "Mars 2026",
-    github: "",
+    github: "https://github.com/votreprofil/containerized-java-microservice", // N'oublie pas de mettre ton vrai lien !
+    live: null,
+    highlight: true,
+  },
+
+  {
+    title: "Architecture de Sauvegarde Automatisée AWS",
+    description: "Déploiement 'Zero Touch' d'une infrastructure Cloud via Terraform. Sécurisation EC2 vers S3 via Rôle IAM (principe du Zero Trust) et automatisation des backups via script Bash et Cron.",
+    image: "assets/images/projects/aws-terraform.png",
+    technologies: ["AWS", "Terraform", "Linux", "Bash", "IAM", "Cron"],
+    status: "termine",
+    statusLabel: "Terminé",
+    startDate: "Mars 2026",
+    endDate: "Mars 2026",
+    github: "", // Mets le lien GitHub de ton Terraform si tu l'as
     live: null,
     highlight: true,
   },
