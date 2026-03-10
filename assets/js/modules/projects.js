@@ -37,15 +37,20 @@ function buildImage(project, extraClass = "") {
   `;
 }
 
-// ── (Désactivé) Liens GitHub / Live ────────────────────────
+// ──Liens GitHub / Live ────────────────────────
 
-/*
+
 function buildLinks(project) {
   const links = [];
 
   if (project.github && project.github !== "#") {
     links.push(`
-      <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Voir le code source sur GitHub">
+      <a href="${project.github}" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="project-link" 
+         aria-label="Voir le code source sur GitHub"
+         onclick="event.stopPropagation()">
         <i class="fa-brands fa-github" aria-hidden="true"></i>
         Code source
       </a>
@@ -55,7 +60,12 @@ function buildLinks(project) {
   if (project.live && project.live !== "#" && project.live !== null) {
     if (links.length) links.push(`<span class="project-links-sep" aria-hidden="true"></span>`);
     links.push(`
-      <a href="${project.live}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Voir le projet en ligne">
+      <a href="${project.live}" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="project-link" 
+         aria-label="Voir le projet en ligne"
+         onclick="event.stopPropagation()">
         <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
         Voir en ligne
       </a>
@@ -63,10 +73,10 @@ function buildLinks(project) {
   }
 
   if (!links.length) return "";
-
   return `<div class="project-links">${links.join("")}</div>`;
 }
-*/
+
+
 
 // ── Card HTML ──────────────────────────────────────────────
 
@@ -108,13 +118,13 @@ function buildProjectCard(project, index) {
           ${datesHTML}
         </p>
 
-        <div class="project-tags" role="list" aria-label="Technologies utilisées">
+         <div class="project-tags" role="list" aria-label="Technologies utilisées">
           ${tagsHTML}
         </div>
 
-        <!-- Liens GitHub / Live masqués pour le moment -->
-        <!-- ${"buildLinks(project)"} -->
+        ${buildLinks(project)}  <!-- Boutons GitHub / Live réactivés -->
       </div>
+
     </article>
   `;
 }

@@ -18,6 +18,12 @@ export const skills = [
         description: "Infrastructure as Code : provisioning reproductible et versionné.",
       },
       {
+        name: "Jenkins",
+        icon: "fab fa-jenkins",
+        url: "https://www.jenkins.io/",
+        description: "Création de pipelines CI/CD (Pipeline as Code), automatisation des builds et tests.",
+      },
+      {
         name: "Linux",
         icon: "fab fa-linux",
         url: "https://www.kernel.org/",
@@ -27,19 +33,13 @@ export const skills = [
         name: "Docker",
         icon: "fab fa-docker",
         url: "https://www.docker.com/",
-        description: "Conteneurisation, Dockerfile, images, réseaux, volumes, compose.",
+        description: "Conteneurisation, Dockerfile, réseaux, volumes, Docker-out-of-Docker (DooD).",
       },
       {
         name: "Kubernetes (en cours)",
         icon: "fas fa-dharmachakra",
         url: "https://kubernetes.io/",
         description: "Notions : pods, services, deployments, configmaps, secrets.",
-      },
-      {
-        name: "VMware",
-        icon: "fas fa-server",
-        url: "https://www.vmware.com/",
-        description: "Virtualisation : gestion de VMs et environnements de test.",
       },
     ],
   },
@@ -48,6 +48,12 @@ export const skills = [
     category: "Scripting & Automatisation",
     icon: "⚡",
     items: [
+      {
+        name: "Groovy",
+        icon: "fas fa-code",
+        url: "https://groovy-lang.org/",
+        description: "Écriture de scripts pour l'automatisation de pipelines Jenkins.",
+      },
       {
         name: "Bash (en cours)",
         icon: "fas fa-terminal",
@@ -71,12 +77,6 @@ export const skills = [
         icon: "fas fa-file-code",
         url: "https://yaml.org/",
         description: "Config : pipelines, compose, manifests.",
-      },
-      {
-        name: "JSON",
-        icon: "fas fa-code",
-        url: "https://www.json.org/",
-        description: "Échanges de données, payloads API, configuration.",
       },
     ],
   },
@@ -129,6 +129,12 @@ export const skills = [
     icon: "🗄️",
     items: [
       {
+        name: "PostgreSQL",
+        icon: "fas fa-database",
+        url: "https://www.postgresql.org/",
+        description: "Base de données relationnelle avancée, couplée avec des ORM.",
+      },
+      {
         name: "SQL",
         icon: "fas fa-database",
         url: "https://www.mysql.com/",
@@ -139,12 +145,6 @@ export const skills = [
         icon: "fas fa-database",
         url: "https://www.mysql.com/",
         description: "Administration et optimisation basique.",
-      },
-      {
-        name: "PostgreSQL",
-        icon: "fas fa-database",
-        url: "https://www.postgresql.org/",
-        description: "Base de données relationnelle avancée, couplée avec des ORM.",
       },
       {
         name: "Postman",
@@ -164,15 +164,29 @@ export const skills = [
 
 export const projects = [
   {
+    title: "Local Software Factory (Jenkins CI/CD)",
+    description: "Déploiement d'un serveur CI/CD Jenkins conteneurisé utilisant une architecture Docker-out-of-Docker (DooD). Création d'un Pipeline déclaratif (Jenkinsfile) en Groovy pour automatiser le clonage, la compilation, les tests et le nettoyage d'une API Spring Boot. Sécurisation de l'infrastructure en appliquant le principe de moindre privilège au conteneur Jenkins et résolution de conflits complexes de réseau Docker.",
+    image: "assets/images/projects/jenkins-cicd.png",
+    technologies: ["Jenkins", "Docker", "Groovy", "Pipeline as Code", "Git"],
+    status: "termine",
+    statusLabel: "Terminé",
+    startDate: "Mars 2026",
+    endDate: "Mars 2026",
+    github: "https://github.com/78KLM/Local-Software-Factory-Jenkins-Docker-Compose-", 
+    live: null,
+    highlight: true,
+  },
+
+  {
     title: "Containerized Java Microservice (Spring Boot / Docker)",
-    description: "Designed a REST API in Java integrating diagnostic routes (Healthcheck) for monitoring. Containerized the application using an optimized multi-stage Dockerfile. Orchestrated the backend and a PostgreSQL database using Docker Compose to establish a secure internal network. Source code is rigorously versioned following the Conventional Commits standard.",
+    description: "Conception d'une API REST en Java intégrant des routes de diagnostic (Healthcheck) pour le monitoring. Conteneurisation de l'application via un Dockerfile multi-étapes optimisé. Orchestration du backend et d'une base de données PostgreSQL avec Docker Compose pour établir un réseau interne sécurisé. Code source rigoureusement versionné selon le standard Conventional Commits.",
     image: "assets/images/projects/java-docker.png",
     technologies: ["Java", "Spring Boot", "Docker", "Docker Compose", "PostgreSQL", "Git"],
     status: "termine",
     statusLabel: "Terminé",
     startDate: "Mars 2026",
     endDate: "Mars 2026",
-    github: "https://github.com/votreprofil/containerized-java-microservice", // N'oublie pas de mettre ton vrai lien !
+    github: "https://github.com/78KLM/Containerized-Java-Microservice-Spring-Boot-Docker-", 
     live: null,
     highlight: true,
   },
@@ -186,7 +200,7 @@ export const projects = [
     statusLabel: "Terminé",
     startDate: "Mars 2026",
     endDate: "Mars 2026",
-    github: "", // Mets le lien GitHub de ton Terraform si tu l'as
+    github: "https://github.com/78KLM/Automated-AWS-Backup-Architecture", 
     live: null,
     highlight: true,
   },
@@ -200,23 +214,9 @@ export const projects = [
     statusLabel: "Terminé",
     startDate: "Jan 2026",
     endDate: "Fév 2026",
-    github: "https://github.com/votreprofil/portfolio",
+    github: "https://github.com/78KLM/portfolio-exoce",
     live: null,
     highlight: true,
-  },
-
-  {
-    title: "Environnement de Dev Dockerisé",
-    description: "Stack locale conteneurisée (Nginx, PHP-FPM, MySQL) via Docker Compose pour standardiser l'environnement de dev et éliminer les problèmes de compatibilité entre machines.",
-    image: "assets/images/projects/docker-env.webp",
-    technologies: ["Docker", "Docker Compose", "Linux", "Bash", "Nginx"],
-    status: "termine",
-    statusLabel: "Terminé",
-    startDate: "Fév 2026",
-    endDate: "Mars 2026",
-    github: "",
-    live: null,
-    highlight: false,
   },
 
   {
