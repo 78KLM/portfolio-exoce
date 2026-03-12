@@ -220,6 +220,20 @@ export const projects = [
   },
 
   {
+    title: "Mister Estate (SaaS IA & Immobilier)",
+    description: "Plateforme prédictive d'estimation immobilière développée en équipe agile (6 personnes). Architecture moderne et découplée : application Web frontend, backend en TypeScript propulsé par Supabase (PostgreSQL, authentification OAuth multi-providers), et moteur d'intelligence artificielle en Python (Machine Learning). En charge de la conteneurisation et de l'infrastructure DevOps pour lier ces différents microservices.",
+    image: "assets/images/projects/mister-estate.png",
+    technologies: ["TypeScript", "Supabase", "Python / IA", "React", "DevOps"],
+    status: "en-cours",
+    statusLabel: "En cours",
+    startDate: "Fév 2026",
+    endDate: "—",
+    github: "", 
+    live: "https://mister-estate.ai/", 
+    highlight: true,
+  },
+
+  {
     title: "Architecture Web Dimawork",
     description: "Plateforme de mise en relation ESN / Freelances. Architecture backend MVC, gestion de BDD relationnelle, et préparation de l'environnement pour une future conteneurisation Docker.",
     image: "assets/images/projects/dimawork.webp",
